@@ -4,7 +4,7 @@ import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
 import logoImg from '../../assets/logo.png';
 
 
-const Navbar = () => {
+const Navbar = ({coin}) => {
     return (
       <div className="max-w-330 mx-auto flex justify-between items-center px-5 py-4 mb-5">
         <div>
@@ -21,7 +21,7 @@ const Navbar = () => {
           </div>
           <div className="font-bold text-xl">
             <button>
-              0 Coin <FontAwesomeIcon icon={faBitcoin} color="gold" />
+              {coin} Coin <FontAwesomeIcon icon={faBitcoin} color="gold" />
             </button>
           </div>
         </div>
