@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FaUser } from "react-icons/fa";
 import { FaFlag } from "react-icons/fa";
-import SelectedPlayers from '../SelectedPlayers/SelectedPlayers';
+import { toast } from 'react-toastify';
 
-const Card = ({ player, setCoin, coin }) => {
+const PlayerCard = ({ player, setCoin, coin, selectedPlayers, setSelectedPlayers }) => {
+  
   const {
     playerName,
     playerCountry,
@@ -18,14 +19,16 @@ const Card = ({ player, setCoin, coin }) => {
 
   const handleChoosePlayer = () => {
     if ((coin - player.price) < 0) {
-      alert("Not enough coin to purchase this player");
+      toast.warning("Not enough coin to purchase this player");
       return;
     } else {
       setCoin(coin - player.price);
-      alert(`${player.playerName} is selected successfully`);
+      toast.success(`${player.playerName} is selected successfully`);
     }
     
     setIsSelected(true);
+    setSelectedPlayers([...selectedPlayers, player]);
+    console.log(selectedPlayers);
   }
 
   return (
@@ -68,4 +71,4 @@ const Card = ({ player, setCoin, coin }) => {
   );
 };
 
-export default Card;
+export default PlayerCard;
